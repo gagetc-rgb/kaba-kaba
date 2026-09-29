@@ -102,6 +102,18 @@ section{padding-block:clamp(72px,10vw,140px)}
 @media (max-width:560px){.figs b{font-size:clamp(22px,7vw,32px);white-space:nowrap}}
 .figs span{display:block;margin-top:8px;font:500 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(228,227,220,.66)}
 @media (max-width:760px){.figs{grid-template-columns:1fr 1fr}.figs div:nth-child(3){padding-left:0;border-left:0}.figs div{padding-bottom:18px}}
+/* special price for all three plots (user, 2026-09-29), ported from Nyanyi */
+.hero-special{display:inline-flex;align-items:baseline;gap:.4em;margin-top:clamp(18px,3.2vh,30px);font:italic 500 clamp(21px,min(2.3vw,4.4vh),32px)/1.2 var(--display);color:#ecd9b0;text-decoration:none;text-shadow:0 0 14px rgba(236,217,176,.55),0 0 38px rgba(214,189,142,.35),0 1px 14px rgba(10,13,11,.7);transition:color .3s,text-shadow .3s}
+.hero-special i{font-style:normal;transition:transform .3s}
+.hero-special:hover{color:#fff4dc;text-shadow:0 0 18px rgba(236,217,176,.75),0 0 48px rgba(214,189,142,.45),0 1px 14px rgba(10,13,11,.7)}
+.hero-special:hover i{transform:translateX(5px)}
+@media (max-width:760px){.hero-special{font-size:min(4.6vw,22px);white-space:nowrap}}
+.special{display:flex;align-items:center;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;margin:0 0 26px;padding:20px 26px;border:1px solid var(--brass);background:linear-gradient(90deg,rgba(176,144,92,.2),rgba(176,144,92,.06));color:var(--stone);text-decoration:none;transition:background .25s}
+.special:hover{background:linear-gradient(90deg,rgba(176,144,92,.3),rgba(176,144,92,.12))}
+.special span{font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brass-hi)}
+.special b{font:400 clamp(24px,2.6vw,34px)/1.1 var(--display);font-style:italic}
+.special i{font-style:normal;color:var(--brass-hi);margin-left:6px}
+@media (max-width:760px){.special{padding:14px 16px}.special b{font-size:22px}}
 
 /* ---------- overview ---------- */
 .overview{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,96px);align-items:start}
@@ -190,7 +202,7 @@ section{padding-block:clamp(72px,10vw,140px)}
 .toggle input:focus-visible+.sw{outline:2px solid var(--brass);outline-offset:2px}
 .toggle i{flex:none;width:14px;height:3px;border-radius:2px;margin-left:auto}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-ink);border-radius:999px;padding:3px}
-.seg.shade{grid-template-columns:repeat(4,1fr)}
+.seg.shade{grid-template-columns:repeat(2,1fr)}
 .seg.views{grid-template-columns:1fr 1fr;border-radius:14px;gap:3px}
 .seg button{font:500 12px/1 var(--body);letter-spacing:.03em;padding:9px 6px;border:0;border-radius:999px;background:transparent;color:var(--muted-ink);cursor:pointer}
 .seg.views button{border-radius:10px}
@@ -335,6 +347,130 @@ form{display:grid;gap:16px;margin-bottom:1em}
 footer{padding-block:40px;border-top:1px solid var(--line-ink);font:400 12px/1.6 var(--mono);color:var(--muted-ink)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
 footer p{max-width:80ch}
+/* ================= phone pass (2026-09-27) ================= */
+/* burger */
+.burger{width:44px;height:44px;padding:0;border:0;border-radius:50%;background:transparent;display:none;place-items:center;cursor:pointer;margin-left:auto;color:var(--stone)}
+.burger i{display:block;width:24px;height:1.5px;background:currentColor;border-radius:2px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.burger i+i{margin-top:7px}
+.burger .ln{display:grid;justify-items:end}
+.burger .ln i:last-child{width:16px}
+.sheet .burger{display:grid}
+.sheet .burger .ln i{width:24px}
+.sheet .burger .ln i:first-child{transform:translateY(4.25px) rotate(45deg)}
+.sheet .burger .ln i:last-child{transform:translateY(-4.25px) rotate(-45deg)}
+.sheet:not([hidden]){animation:sheetIn .38s cubic-bezier(.2,.7,.2,1)}
+.sheet:not([hidden]) ul li{animation:linkIn .6s cubic-bezier(.2,.7,.2,1) both}
+.sheet ul li:nth-child(2){animation-delay:.04s!important}.sheet ul li:nth-child(3){animation-delay:.08s!important}.sheet ul li:nth-child(4){animation-delay:.12s!important}.sheet ul li:nth-child(5){animation-delay:.16s!important}.sheet ul li:nth-child(6){animation-delay:.2s!important}
+.sheet:not([hidden]) .burger .ln i{animation:crossIn .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes sheetIn{from{opacity:0}to{opacity:1}}
+@keyframes linkIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes crossIn{from{transform:none}}
+@media (max-width:980px){.nav .burger{display:grid}}
+/* floating enquiry pill */
+.fab{display:none}
+@media (max-width:980px){
+  .fab{display:inline-flex;position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:45;transform:translate(-50%,0);align-items:center;gap:10px;height:50px;padding:0 26px;border-radius:999px;background:var(--brass);color:var(--ink);font:500 14px/1 var(--body);letter-spacing:.03em;text-decoration:none;white-space:nowrap;box-shadow:0 10px 30px rgba(8,11,9,.38),0 1px 0 rgba(255,255,255,.18) inset;transition:opacity .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+  .fab svg{width:16px;height:16px}
+  .js .fab{opacity:0;transform:translate(-50%,16px)}
+  .ready .fab{opacity:1;transform:translate(-50%,0)}
+  .ready .fab.away{opacity:0;transform:translate(-50%,16px);pointer-events:none}
+  footer{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
+}
+.figs span .nw{display:inline;margin:0;white-space:nowrap}
+.dock,.cdesc{display:none}
+@media (max-width:760px){
+  section{padding-block:56px}
+  /* hero */
+  .hero .wrap{padding-block:120px calc(env(safe-area-inset-bottom,0px) + 92px)}
+  .hero .coords{font-size:min(10px,2.7vw);letter-spacing:.02em;white-space:nowrap}
+  .hero h1{margin:14px 0 16px}
+  .figs{margin-top:30px}
+  .figs div{padding-top:14px;padding-bottom:12px}
+  .figs span{font-size:10px;letter-spacing:.08em;margin-top:6px}
+  /* facts */
+  .facts{margin-top:12px}
+  .facts div{padding:16px 0 18px}
+  .facts b{font-size:21px}
+  .facts p{margin-top:6px;font-size:15px}
+  .facts+.overview{margin-top:56px}
+  /* 3D model: one screen, controls in a translucent dock */
+  .model-head{margin-bottom:24px;gap:16px}
+  .viewer{display:block;position:relative}
+  .stage{height:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 172px);min-height:440px;max-height:860px}
+  .readout{left:10px;top:10px;right:auto;min-width:0;padding:9px 12px;background:rgba(17,22,18,.5)}
+  .readout b{font-size:16px;margin-bottom:3px}
+  .readout .row{font-size:10.5px;gap:14px}
+  .compass{right:10px;top:10px;width:40px;height:40px;background:rgba(17,22,18,.42)}
+  .compass svg{width:26px;height:26px}
+  .grab{top:58px;bottom:auto;right:10px;height:40px;padding:0 14px 0 11px;font-size:10px}
+  .grab svg{width:19px;height:19px}
+  .hint{left:10px;bottom:auto;top:92px;font-size:10px}
+  .viewer.dock-open .hint{display:none}
+  .panel{position:absolute;left:10px;right:10px;bottom:62px;z-index:5;display:block;padding:0;border:0;background:none;pointer-events:none}
+  .panel>div{display:none;pointer-events:auto;padding:12px 12px 10px;border-radius:14px;border:1px solid rgba(228,227,220,.16);background:rgba(17,22,18,.52);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);animation:dockIn .32s cubic-bezier(.2,.7,.2,1)}
+  .panel>div.open{display:block}
+  .viewer:not(.live) .panel>div.live-only{display:none}
+  .panel h4{display:none}
+  .panel .provenance{display:none}
+  .panel .seg{display:flex;gap:6px;border:0;padding:0;border-radius:0;overflow-x:auto;scrollbar-width:none}
+  .panel .seg::-webkit-scrollbar{display:none}
+  .panel .seg button{flex:none;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid rgba(228,227,220,.18);color:var(--stone);font-size:12.5px;background:rgba(17,22,18,.25)}
+  .panel .seg button[aria-pressed="true"]{border-color:var(--stone)}
+  .panel .toggles{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  .panel .toggle{flex:none;min-height:36px;padding:0 12px 0 10px;gap:8px;border-radius:999px;border:1px solid rgba(228,227,220,.18);font-size:12.5px;white-space:nowrap}
+  .panel .toggle i{display:none}
+  .panel .legend{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin-top:10px!important;font-size:10.5px;color:rgba(228,227,220,.8)}
+  .panel .legend i{width:14px;height:8px}
+  .panel .sun label{font-size:11px;margin-bottom:4px}
+  .panel .sun label[for=sunMonth]{margin-top:10px!important}
+  .panel .sun .meta{font-size:10px;margin-top:6px;color:rgba(228,227,220,.7)}
+  .dock{position:absolute;left:10px;right:10px;bottom:10px;z-index:6;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));height:44px;padding:3px;border-radius:999px;border:1px solid rgba(228,227,220,.16);background:rgba(17,22,18,.52);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1)}
+  .viewer:not(.live) .dock{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .viewer:not(.live) .dock .live-only{display:none}
+  .dock button{border:0;border-radius:999px;background:transparent;color:rgba(228,227,220,.78);font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s}
+  .dock button[aria-expanded="true"]{background:rgba(228,227,220,.92);color:var(--ink)}
+  .viewer+.provenance{margin-top:12px;font:400 11.5px/1.5 var(--body);color:var(--muted-ink)}
+  #model .cta-link{margin-top:20px}
+  /* concepts: glass chips over a square model */
+  .pot-head{margin-bottom:22px}
+  .pot{position:relative}
+  .pot .concept-stage{aspect-ratio:1/1}
+  .concept-stage .hint{top:10px;bottom:auto;left:10px}
+  .pot .scen{position:absolute;left:10px;right:10px;bottom:10px;z-index:3;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0}
+  .pot .card{padding:0 6px;min-height:42px;border-radius:999px;align-content:center;justify-items:center;gap:0;background:rgba(17,22,18,.5);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-color:rgba(228,227,220,.18)}
+  .pot .card .k,.pot .card p{display:none}
+  .pot .card h3{font:500 12px/1.1 var(--body);letter-spacing:.02em;text-align:center}
+  .scen .card[aria-pressed="true"]{background:rgba(228,227,220,.92);border-color:var(--stone);color:var(--ink)}
+  .cdesc{display:block;margin:14px 0 0;text-align:center;font:italic 400 19px/1.35 var(--display);color:var(--stone)}
+  .pot-cap{margin-top:8px}
+  /* gallery gap */
+  #gallery{padding-top:8px!important}
+  #gallery .gal-head{margin-bottom:0}
+  #gallery .gallery:not([hidden]){margin-top:24px}
+  /* documents and questions: headings first, the text on tap */
+  .doc{grid-template-columns:40px minmax(0,1fr);gap:2px 14px;padding:16px 0;cursor:pointer}
+  .doc .ico{grid-row:1/3}
+  .doc .ico{width:34px;height:44px;padding-bottom:6px;font-size:8px}
+  .doc .ico::before{width:10px;height:10px}
+  .doc h3{font-size:20px;display:flex;justify-content:space-between;gap:12px}
+  .doc .pill{display:inline-block;margin-top:4px;padding:0;border:0;font-size:10px;letter-spacing:.1em;color:var(--muted)}
+  .doc .pill.ok{color:var(--moss)}
+  .doc:not(.open) p,.doc:not(.open) .meta{display:none}
+  .acc-h::after{content:"+";flex:none;font:300 24px/1 var(--body);color:var(--muted);transition:transform .3s}
+  .open>.acc-h::after,.open .acc-h::after{transform:rotate(45deg)}
+  .dd{margin-top:28px}
+  .dd article{padding:16px 0;cursor:pointer}
+  .dd h3{font-size:20px;margin-bottom:0;display:flex;justify-content:space-between;gap:12px}
+  .dd article.open h3{margin-bottom:10px}
+  .dd article:not(.open) p{display:none}
+  .contact .figs b{font-size:clamp(22px,7vw,30px)}
+  .field input,.field select,.field textarea{font-size:16px}
+}
+/* location scale: the phone grid must win over the base rule, which is declared later */
+@media (max-width:560px){.scale{grid-template-columns:minmax(0,1fr) 64px}}
+@media (max-width:380px){.readout .row{gap:8px;font-size:10px}.readout b{font-size:15px}.pot .card h3{font-size:11px}.pot .card{padding:0 4px}}
+@keyframes dockIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.panel>div,.sheet:not([hidden]),.sheet:not([hidden]) ul li,.sheet:not([hidden]) .burger .ln i{animation:none!important}}
 </style>
 
 <nav class="nav" id="nav" aria-label="Sections">
@@ -349,11 +485,11 @@ footer p{max-width:80ch}
       <li><a href="#documents">Documents</a></li>
     </ul>
     <a class="btn" href="#contact">Arrange a viewing</a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuSheet">Menu</button>
+    <button class="burger" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuSheet" aria-label="Open the menu"><span class="ln" aria-hidden="true"><i></i><i></i></span></button>
   </div>
 </nav>
 <div class="sheet" id="menuSheet" hidden role="dialog" aria-modal="true" aria-label="Sections">
-  <div class="top"><span class="brand">Kaba<span class="hy">-</span>Kaba</span><button class="menu-btn" id="menuClose" type="button" style="display:inline-flex">Close</button></div>
+  <div class="top"><span class="brand">Kaba<span class="hy">-</span>Kaba</span><button class="burger" id="menuClose" type="button" aria-label="Close the menu"><span class="ln" aria-hidden="true"><i></i><i></i></span></button></div>
   <ul>
     <li><a href="#overview">The land</a></li><li><a href="#model">3D model</a></li><li><a href="#film">Film</a></li>
     <li><a href="#location">Location</a></li><li><a href="#potential">Potential</a></li><li><a href="#documents">Documents</a></li>
@@ -362,18 +498,19 @@ footer p{max-width:80ch}
 </div>
 
 <header class="hero" id="top">
-  <img class="poster" src="media/poster.jpg" alt="">
-  <video id="heroVideo" poster="media/poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <picture><source media="(max-aspect-ratio: 4/5)" srcset="media/poster-portrait.jpg"><img class="poster" src="media/poster.jpg" alt=""></picture>
+  <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
   <div class="wrap">
     <div class="coords">8°36′29″ S &nbsp;·&nbsp; 115°07′57″ E &nbsp;·&nbsp; Kediri, Tabanan, Bali</div>
     <h1>Kaba<span class="hy">-</span>Kaba</h1>
     <p class="sub">A jungle hillside that falls to the river, ten minutes from Canggu.</p>
     <div class="figs">
-      <div><b class="num">1,500 m²</b><span>Three plots of 500 m²</span></div>
+      <div><b class="num">1,500 m²</b><span>Three plots of <span class="nw">500 m²</span></span></div>
       <div><b class="num">21 m</b><span>Above the riverbed</span></div>
       <div><b class="num">2056</b><span>Lease to 8 July · extension guaranteed</span></div>
       <div><b class="num">IDR 13.5 M</b><span>Per are, per year</span></div>
     </div>
+    <a class="hero-special" href="#contact" data-special>Taking all three plots? Ask for our special price <i aria-hidden="true">→</i></a>
   </div>
 </header>
 
@@ -398,7 +535,7 @@ footer p{max-width:80ch}
       </div>
       <figure class="plan" style="margin:0">
         <svg id="planSvg" viewBox="0 0 100 100" role="img" aria-label="Survey plan: three 500 m² plots between the road and the river, with 0.5 m contours and a small shrine at the north tip of plot I"></svg>
-        <figcaption><span>Survey plan · Aug 2025 · contours 0.5 m</span><span id="planScale">Scale bar 10 m</span></figcaption>
+        <figcaption><span>Survey plan</span></figcaption>
       </figure>
     </div>
   </div>
@@ -428,8 +565,8 @@ footer p{max-width:80ch}
         <div class="hint" id="hint">Drag to turn the model</div>
         <button type="button" class="grab" id="grabBtn" aria-pressed="false" aria-label="Take control of the 3D model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10V4.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 10.5V6.5a1.5 1.5 0 0 1 3 0v7.5a7 7 0 0 1-7 7h-.6a6 6 0 0 1-4.6-2.2l-3-3.7a1.6 1.6 0 0 1 2.4-2.1L9 15V11"/></svg><span id="grabTxt">Explore</span></button>
       </div>
-      <aside class="panel" aria-label="Model controls">
-        <div>
+      <aside class="panel" id="panel" aria-label="Model controls">
+        <div data-g="views" id="g-views">
           <h4>Views</h4>
           <div class="seg views" role="group" aria-label="Camera view">
             <button type="button" data-view="overview" aria-pressed="true">Overview</button>
@@ -438,7 +575,7 @@ footer p{max-width:80ch}
             <button type="button" data-view="plan" aria-pressed="false">Plan</button>
           </div>
         </div>
-        <div class="live-only">
+        <div class="live-only" data-g="layers" id="g-layers">
           <h4>Layers</h4>
           <div class="toggles">
             <label class="toggle"><input type="checkbox" id="lyr-plots" checked><span class="sw"></span>Plots on offer<i style="background:var(--brass-hi)"></i></label>
@@ -446,17 +583,15 @@ footer p{max-width:80ch}
             <label class="toggle"><input type="checkbox" id="lyr-trees" checked><span class="sw"></span>Palms · 39 surveyed<i style="background:#6f8a5e"></i></label>
           </div>
         </div>
-        <div>
+        <div data-g="terrain" id="g-terrain">
           <h4>Terrain</h4>
           <div class="seg shade" role="group" aria-label="Terrain shading">
             <button type="button" data-shade="clay" aria-pressed="true">Model</button>
             <button type="button" data-shade="slope" aria-pressed="false">Slope</button>
-            <button type="button" data-shade="elev" aria-pressed="false">Height</button>
-            <button type="button" data-shade="setback" aria-pressed="false">Setback</button>
           </div>
           <div class="legend" id="legend" hidden style="margin-top:14px"></div>
         </div>
-        <div class="sun live-only">
+        <div class="sun live-only" data-g="sun" id="g-sun">
           <h4>Sun</h4>
           <label for="sunTime"><span>Local time</span><span id="sunLabel" class="num">15:30</span></label>
           <input type="range" id="sunTime" min="360" max="1110" step="5" value="930">
@@ -464,8 +599,8 @@ footer p{max-width:80ch}
           <input type="range" id="sunMonth" min="0" max="11" step="1" value="8">
           <div class="meta" id="sunMeta">—</div>
         </div>
-        <p class="provenance">Source: topographic survey by PT Geotrah Pramana Sentosa, Aug 2025. Trees and buildings are simplified.</p>
-      </aside>
+              </aside>
+      <div class="dock" id="dock" aria-label="Model controls"><button type="button" data-g="views" aria-expanded="false" aria-controls="g-views">View</button><button type="button" data-g="terrain" aria-expanded="false" aria-controls="g-terrain">Terrain</button><button type="button" class="live-only" data-g="layers" aria-expanded="false" aria-controls="g-layers">Layers</button><button type="button" class="live-only" data-g="sun" aria-expanded="false" aria-controls="g-sun">Sun</button></div>
     </div>
     <a class="cta-link" href="#contact">See it in person · arrange a viewing →</a>
   </div>
@@ -487,7 +622,8 @@ footer p{max-width:80ch}
   </div>
 </section>
 
-<section class="dark" id="gallery" style="padding-top:clamp(40px,6vw,80px)">
+<!-- gallery hidden until good photos are picked (user, 2026-09-29); markup and JS kept so galGrid/galToggle still resolve -->
+<section class="dark" id="gallery" style="padding-top:clamp(40px,6vw,80px)" hidden>
   <div class="wrap">
     <div class="gal-head">
       <div>
@@ -539,28 +675,29 @@ footer p{max-width:80ch}
     <div class="scen" role="group" aria-label="Building concepts">
       <button type="button" class="card" data-c="estate" aria-pressed="true">
         <span class="k">Concept A</span>
-        <h3>The Whole View</h3>
-        <p>For those who measure a home by its horizon.</p>
+        <h3>One long house</h3>
+        <p>One house along the ridge, a pool and a pavilion below.</p>
       </button>
       <button type="button" class="card" data-c="three" aria-pressed="false">
         <span class="k">Concept B</span>
-        <h3>The Retreats</h3>
-        <p>Three houses. Each a world of its own.</p>
+        <h3>Three villas</h3>
+        <p>A house on each plot, sharing one gate at the road.</p>
       </button>
       <button type="button" class="card" data-c="tower" aria-pressed="false">
         <span class="k">Concept C</span>
-        <h3>The Twins</h3>
-        <p>Above the palms. Beneath the sky.</p>
+        <h3>Two tree-top houses</h3>
+        <p>A matched pair of houses, rising three storeys above the palms.</p>
       </button>
     </div>
     </div>
+    <p class="cdesc" id="cDesc" aria-live="polite">One house along the ridge, a pool and a pavilion below.</p>
     <p class="pot-cap">Illustrative concepts on the surveyed terrain, within the zoning limits. Not designs.</p>
 
     <div class="envelope two">
       <div><b class="num">900 m²</b><span>Build on up to 60% of the land</span></div>
       <div><b class="num">3,600 m²</b><span>Floor space up to 2.4× the land</span></div>
     </div>
-    <p class="fine">Limits from the regency’s zoning letter (ITR 122.B/2025), applied to the 1,500 m² on offer.</p>
+    <p class="fine">Limits from the regency’s zoning letter, applied across the 1,500 m² on offer.</p>
 
     <div class="route">
       <h3>From zoning to keys</h3>
@@ -593,15 +730,6 @@ footer p{max-width:80ch}
       </div>
     </div>
 
-    <div class="eyebrow glance-h">At a glance</div>
-    <div class="spec glance">
-      <dl><dt>Offered area</dt><dd class="num">1,500 m²<small>Three plots of 500 m²: I · II · III</small></dd></dl>
-      <dl><dt>Tenure</dt><dd>Leasehold<small>A notarial lease over a freehold (SHM) title held by an Indonesian owner</small></dd></dl>
-      <dl><dt>Lease</dt><dd class="num">To 8 July 2056<small>Extension of up to 30 years guaranteed</small></dd></dl>
-      <dl><dt>Zoning</dt><dd>Yellow zone<small>Residential across the land · villa use permitted (ITR 2025)</small></dd></dl>
-      <dl><dt>Build</dt><dd class="num">900 m² footprint<small>Floor space up to 3,600 m²</small></dd></dl>
-      <dl><dt>Access</dt><dd class="num">6 m public road<small>Along the top of the land</small></dd></dl>
-    </div>
   </div>
 </section>
 
@@ -611,10 +739,10 @@ footer p{max-width:80ch}
     <h2 style="margin-top:14px;max-width:20ch">What buyers <em>ask first.</em></h2>
     <div class="dd">
       <article><h3>Can a foreigner hold this land?</h3><p>Yes, as a leaseholder. The freehold title stays with the Indonesian owner, as the law requires, and you hold a notarial lease. <b>You see the full lease terms before any deposit.</b></p></article>
-      <article><h3>What happens in 2056?</h3><p>The lease runs to 8 July 2056, and <b>an extension of up to 30 years is guaranteed</b> in it, at the market rate at the time. As is standard in Bali, permanent buildings stay with the land when a lease finally ends.</p></article>
+      <article><h3>What happens in 2056?</h3><p>The lease runs to 8 July 2056, and <b>an extension of up to 30 years is guaranteed</b> in it, at the market rate at the time. As is standard in Bali, permanent buildings stay with the land when the lease ends.</p></article>
       <article><h3>What if the owner dies or sells the land?</h3><p><b>The lease continues.</b> It binds the owner’s heirs, and a sale of the land does not end it.</p></article>
       <article><h3>Who handles the permits?</h3><p>Your architect prepares the design; <b>the landowner signs the application and gathers the approvals</b> from the neighbours and the village. The costs are yours.</p></article>
-      <article><h3>Is it safe by the river?</h3><p>The ITR places the area in a flood-hazard category (Perda Tabanan 3/2023, Art. 77(5)). The survey shows <b>the three plots sit 7 to 21 m above the riverbed</b>, and its cross-sections are in the document pack for your engineer.</p></article>
+      <article><h3>Is it safe by the river?</h3><p><b>The three plots sit 7 to 21 m above the riverbed</b>, and its cross-sections are in the document pack for your engineer. The ITR places the area in a flood-hazard category, so your building permit sets the exact setback from the water.</p></article>
       <article><h3>Can I rent it out?</h3><p>Living here yourself and long-term letting are straightforward. Nightly letting depends on a business licence, not on zoning: <b>the ITR already lists villa use as permissible.</b></p></article>
     </div>
     <a class="cta-link" href="#contact">Another question? Ask us →</a>
@@ -629,16 +757,17 @@ footer p{max-width:80ch}
         <h2 style="margin:14px 0 22px">Stand on it <em>at sunrise.</em></h2>
         <p class="lede">We walk the boundary with you, from the road down toward the river, and bring the survey. If you are abroad, we can do a live video walk of the site.</p>
         <div class="figs" style="margin-top:44px;grid-template-columns:1fr 1fr">
-          <div><b class="num">IDR 6.08 B</b><span>Whole parcel · 15 are × 30 yr</span></div>
+          <div><b class="num">IDR 6.08 B</b><span>Whole parcel · <span class="nw">15 are × 30 yr</span></span></div>
           <div><b class="num">≈ USD 343k</b><span>At 17,688 IDR / USD</span></div>
         </div>
+        <a class="special" href="#contact" id="askSpecial" data-special><span>Taking all three plots?</span><b>Ask for our special price <i aria-hidden="true">→</i></b></a>
       </div>
       <div id="formWrap">
         <form id="enquiry" novalidate>
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
           <div class="field"><label for="f-contact">Email or WhatsApp</label><input id="f-contact" name="contact" autocomplete="email" required></div>
           <div class="field"><label for="f-want">I would like</label>
-            <select id="f-want" name="want"><option>A private viewing on site</option><option>A live video walk-through</option><option>The document pack</option><option>To discuss price</option></select></div>
+            <select id="f-want" name="want"><option>A private viewing on site</option><option>A live video walk-through</option><option>The document pack</option><option>To discuss price</option><option>A special price for all three plots</option></select></div>
           <div class="field"><label for="f-msg">Anything we should know</label><textarea id="f-msg" name="msg" rows="3"></textarea></div>
           <button class="btn" type="submit" style="justify-self:start;margin-top:8px">Send enquiry</button>
           <p class="form-note">We reply within one working day. Your details are used only to answer you.</p>
@@ -656,6 +785,7 @@ footer p{max-width:80ch}
   </div>
 </footer>
 
+<a class="fab" id="fab" href="#contact">Arrange a viewing<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
 <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
   <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close">✕</button>
   <img id="lbImg" alt="">
@@ -682,7 +812,7 @@ function loadScript(src){ return new Promise((res, rej) => { const el = document
 const docEl = document.documentElement, REDUCED_M = matchMedia('(prefers-reduced-motion: reduce)').matches;
 (document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1200))]) : Promise.resolve()).then(() => requestAnimationFrame(() => docEl.classList.add('ready')));
 // sections ease in as they come into view (siblings entering together are staggered)
-const rvEls = [...document.querySelectorAll('section .wrap > *')].filter(el => !el.closest('.hero'));
+const rvEls = [...document.querySelectorAll('section .wrap > *')].filter(el => !el.closest('.hero') && !el.matches('.cdesc'));  // the concept line is phone-only
 rvEls.forEach(el => el.classList.add('rv'));
 const rvIO = new IntersectionObserver(es => { let k = 0; es.forEach(en => { if (!en.isIntersecting) return; const el = en.target; el.style.transitionDelay = (k++ * 90) + 'ms'; el.classList.add('in'); rvIO.unobserve(el); setTimeout(() => { el.style.transitionDelay = ''; }, 1400); }); }, {rootMargin: '0px 0px -6% 0px'});
 rvEls.forEach(el => rvIO.observe(el));
@@ -699,8 +829,25 @@ if (!REDUCED_M && matchMedia('(pointer: fine)').matches) {
 }
 const hv = document.getElementById('heroVideo');
 hv.addEventListener('playing', () => hv.classList.add('on'), {once: true});
+const portrait = matchMedia('(max-aspect-ratio: 4/5)').matches;  // phones get the portrait cut, from the 4K source
+hv.poster = portrait ? 'media/poster-portrait.jpg' : 'media/poster.jpg';
 if (matchMedia('(prefers-reduced-motion: reduce)').matches) hv.removeAttribute('autoplay');
-else { hv.src = innerWidth < 900 ? 'media/hero-720.mp4' : 'media/hero.mp4'; hv.play().catch(() => {}); }
+else {
+  hv.src = portrait ? 'media/hero-portrait.mp4' : innerWidth < 900 ? 'media/hero-720.mp4' : 'media/hero.mp4'; hv.play().catch(() => {});
+}
+/* floating enquiry pill: always there, except over the form itself */
+const fab = document.getElementById('fab');
+new IntersectionObserver(es => fab.classList.toggle('away', es[0].isIntersecting), {rootMargin: '0px 0px -30% 0px'}).observe(document.getElementById('formWrap'));
+const PHONE = matchMedia('(max-width: 760px)');
+/* documents and questions: on the phone only the headings show; a tap opens the text */
+[...document.querySelectorAll('.doc h3, .dd h3')].forEach(h => {
+  const box = h.closest('.doc, article'); h.classList.add('acc-h');
+  const set = on => { box.classList.toggle('open', on); h.setAttribute('aria-expanded', on); };
+  const sync = () => { if (PHONE.matches) { h.setAttribute('role', 'button'); h.tabIndex = 0; set(box.classList.contains('open')); } else { h.removeAttribute('role'); h.removeAttribute('tabindex'); h.removeAttribute('aria-expanded'); } };
+  box.addEventListener('click', () => { if (PHONE.matches) set(!box.classList.contains('open')); });
+  h.addEventListener('keydown', e => { if (PHONE.matches && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); set(!box.classList.contains('open')); } });
+  sync(); PHONE.addEventListener('change', sync);
+});
 /* phone menu */
 const sheet = document.getElementById('menuSheet'), menuBtn = document.getElementById('menuBtn');
 const setMenu = open => { sheet.hidden = !open; menuBtn.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; (open ? document.getElementById('menuClose') : menuBtn).focus(); };
@@ -806,6 +953,7 @@ function cStop(){ if (cAuto) { clearInterval(cAuto); cAuto = null; } }
 function setConcept(name){
   cCur = name; cSpin.alt = CALT[name];
   cCards.forEach(x => x.setAttribute('aria-pressed', x.dataset.c === name));
+  document.getElementById('cDesc').textContent = cCards.find(x => x.dataset.c === name).querySelector('p').textContent;
   if (cLive) { if (cOnChange) cOnChange(name); }
   else if (CNF) cFade(cFrames(name)[cI].src);
   else cShow(cI);
@@ -822,6 +970,9 @@ cStage.addEventListener('pointermove', e => { if (cDx === null) return; const d 
 /* ---------- drive times ---------- */
 const TIMES = [['International school',5],['Canggu',10],['The beach',10],['Nuanu',15],['Tanah Lot',15]];
 document.getElementById('times').innerHTML = TIMES.map(t => `<div class="time"><strong>${t[0]}</strong><div class="track"><i style="width:${t[1]/15*100}%"></i></div><span class="num">${t[1]} min</span></div>`).join('');
+
+// "ask for a special price": all three plots, and the request already chosen in the form
+document.querySelectorAll('[data-special]').forEach(a => a.addEventListener('click', () => { document.getElementById('f-want').value = 'A special price for all three plots'; }));
 
 /* ---------- enquiry ---------- */
 document.getElementById('enquiry').addEventListener('submit', e => {
@@ -918,6 +1069,13 @@ document.querySelectorAll('[data-shade]').forEach(b => b.onclick = () => {
 });
 new ResizeObserver(placeTags).observe(stage);
 showFrame(0);
+const dockBtns = [...document.querySelectorAll('#dock button')], panelEl = document.getElementById('panel');
+function openGroup(g){
+  dockBtns.forEach(b => b.setAttribute('aria-expanded', b.dataset.g === g));
+  panelEl.querySelectorAll('[data-g]').forEach(d => d.classList.toggle('open', d.dataset.g === g));
+  viewer.classList.toggle('dock-open', !!g);
+}
+dockBtns.forEach(b => b.onclick = () => openGroup(b.getAttribute('aria-expanded') === 'true' ? null : b.dataset.g));
 
 /* ---- live 3D upgrade (only with hardware-accelerated WebGL) ---- */
 function fastGL(){ try { const c = document.createElement('canvas'), o = {failIfMajorPerformanceCaveat: true}; return !!(c.getContext('webgl2', o) || c.getContext('webgl', o)); } catch (e) { return false; } }
@@ -941,9 +1099,10 @@ function startLive(){
 }
 gate.observe(stage); gate.observe(cStage);
 function init3D(){
+const fitK = (aspect, ref, e = .8) => Math.min(Math.max(Math.pow(ref / aspect, e), 1), 2.4);  // 1 on landscape screens
 THREE.ColorManagement.legacyMode = false;
 const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'});
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(devicePixelRatio, PHONE.matches ? 1.5 : 2));  // phones: lighter on the GPU and battery
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
 renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -1007,7 +1166,7 @@ const C = h => new THREE.Color(h);
 const clay = C('#ece8de'), clayOut = C('#a8a598'), plotT = C('#d9b777'), plotHi = C('#f2c96e');
 const slopeCls = [[15,'#aebf93','Under 15%, gentle'],[30,'#e2d29a','15–30%, moderate'],[50,'#d39a63','30–50%, steep'],[999,'#a4553f','Over 50%, very steep']];
 const elevRamp = [C('#4f7c78'), C('#9fb59a'), C('#e6dcb8'), C('#c79c62')];
-let shade = 'clay', hoverPlot = -1, layerOn = {plots:true};
+let shade = 'clay', hoverPlot = -1, roadHover = false, layerOn = {plots:true};
 function paint(){
   const tmp = new THREE.Color();
   for (let k = 0; k < N; k++) {
@@ -1075,7 +1234,7 @@ if (CON) CK.forEach(k => { scene.add(CON[k].group); CON[k].group.visible = false
 /* lights */
 const hemi = new THREE.HemisphereLight(0xdfe8ee, 0x3a3226, .55); scene.add(hemi);
 const sun = new THREE.DirectionalLight(0xfff1dc, 2.4); sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, {left:-80, right:80, top:80, bottom:-80, near:1, far:500}); sun.shadow.bias = -0.0004; sun.shadow.normalBias = .4;
+sun.shadow.mapSize.set(PHONE.matches ? 1024 : 2048, PHONE.matches ? 1024 : 2048); Object.assign(sun.shadow.camera, {left:-80, right:80, top:80, bottom:-80, near:1, far:500}); sun.shadow.bias = -0.0004; sun.shadow.normalBias = .4;
 scene.add(sun); scene.add(sun.target); sun.target.position.set(0, 10, 0);
 
 /* sun position (NOAA simplified) */
@@ -1111,18 +1270,22 @@ sunInput.addEventListener('input', setSun); monthInput.addEventListener('input',
 /* labels */
 const labelsEl = document.getElementById('labels'), tags = [];
 function tag(html, cls, x, y, lift){ const el = document.createElement('div'); el.className = 'tag ' + cls; el.innerHTML = html; labelsEl.appendChild(el); tags.push({el, p: V(x, y, lift), layer: cls.includes('plot') ? 'plots' : cls.includes('water') ? 'river' : 'road'}); }
-tag('River', 'water', 22, -26, 3); tag('River', 'water', 42, -12, 3); tag('Road', 'road', -18, 24, 3);
+// the road tag only shows on hover/pick (user, 2026-09-29): the road is already visible in the model, the
+// permanent label just cluttered the view
+tag('River', 'water', 22, -26, 3); tag('River', 'water', 42, -12, 3); tag('Road', 'road hoveronly', -18, 24, 3);
 
 /* views */
 const VIEWS = {
   overview:{pos:[-92, 76, 118], tgt:[2, 6, 6]},
+  overviewTall:{pos:[-70, 118, 90], tgt:[2, 4, 6]},  // portrait screens: look down more, so the land fills the height
+  planTall:{pos:[0, 200, 12], tgt:[0, 0, 7]},
   road:{pos:[-4, 40, -62], tgt:[4, 10, 12]},
   river:{pos:[30, 24, 96], tgt:[-2, 14, 2]},
   plan:{pos:[0, 150, 14], tgt:[0, 0, 7]},
 };
 let tween = null;
 function goView(name, instant){
-  const v = VIEWS[name]; const p1 = new THREE.Vector3(...v.pos), t1 = new THREE.Vector3(...v.tgt);
+  const v = (w_h() < 1 && VIEWS[name + 'Tall']) || VIEWS[name], t1 = new THREE.Vector3(...v.tgt), p1 = new THREE.Vector3(...v.pos).sub(t1).multiplyScalar(camK).add(t1);
   document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === name));
   if (instant) { camera.position.copy(p1); controls.target.copy(t1); controls.update(); return; }
   tween = {p0: camera.position.clone(), t0: controls.target.clone(), p1, t1, s: performance.now(), d: 1400};
@@ -1147,13 +1310,18 @@ function pick(e){
   } else readout.innerHTML = defaultReadout;
   if (n >= 0) readout.innerHTML = plotInfo(S.plots[n]);
   if (n !== hoverPlot) { hoverPlot = n; if (shade === 'clay') paint(); }
+  // the "Road" tag lights up only while the pointer is over the road itself (user, 2026-09-29)
+  const overRoad = groups.road && ray.intersectObjects(groups.road.children)[0];
+  if (!!overRoad !== roadHover) roadHover = !!overRoad;
 }
 renderer.domElement.addEventListener('pointermove', e => { if (e.buttons === 0) pick(e); });
-renderer.domElement.addEventListener('pointerleave', () => { readout.innerHTML = defaultReadout; if (hoverPlot !== -1) { hoverPlot = -1; paint(); } });
+renderer.domElement.addEventListener('pointerleave', () => { readout.innerHTML = defaultReadout; roadHover = false; if (hoverPlot !== -1) { hoverPlot = -1; paint(); } });
 controls.addEventListener('start', () => { controls.autoRotate = false; tween = null; document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', 'false')); });
 
 /* resize + loop */
-function resize(){ const w = stage.clientWidth, h = stage.clientHeight; renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix(); }
+let camK = 1; const w_h = () => stage.clientWidth / stage.clientHeight;
+function resize(){ const w = stage.clientWidth, h = stage.clientHeight; renderer.setSize(w, h, false); camera.aspect = w/h; camera.updateProjectionMatrix();
+  const k = fitK(w / h, 1.3, .55); if (k !== camK) { camera.position.sub(controls.target).multiplyScalar(k / camK).add(controls.target); camK = k; controls.maxDistance = 260 * k; controls.update(); } }
 new ResizeObserver(resize).observe(stage); resize();
 paint(); goView('overview', true);
 const compass = document.getElementById('compass'), v3 = new THREE.Vector3();
@@ -1166,7 +1334,7 @@ function frame(now){
   controls.update();
   renderer.render(scene, camera);
   const w = stage.clientWidth, h = stage.clientHeight;
-  tags.forEach(t => { const on = (groups[t.layer] ? groups[t.layer].visible : true); v3.copy(t.p).project(camera); const vis = on && v3.z < 1 && Math.abs(v3.x) < 1.1 && Math.abs(v3.y) < 1.1; t.el.style.display = vis ? '' : 'none'; if (vis) t.el.style.transform = `translate(${(v3.x*.5+.5)*w}px, ${(-v3.y*.5+.5)*h}px) translate(-50%,-100%)`; });
+  tags.forEach(t => { const on = (groups[t.layer] ? groups[t.layer].visible : true) && (!t.el.classList.contains('hoveronly') || roadHover); v3.copy(t.p).project(camera); const vis = on && v3.z < 1 && Math.abs(v3.x) < 1.02 && Math.abs(v3.y) < 1.05; t.el.style.display = vis ? '' : 'none'; if (vis) { const ew = t.ew || (t.ew = t.el.offsetWidth), px = Math.min(Math.max((v3.x*.5+.5)*w, ew/2 + 8), w - ew/2 - 8); t.el.style.transform = `translate(${px}px, ${(-v3.y*.5+.5)*h}px) translate(-50%,-100%)`; } });
   const dir = new THREE.Vector3(); camera.getWorldDirection(dir);
   compass.style.transform = `rotate(${Math.atan2(dir.x, -dir.z) * -180/Math.PI}deg)`;
 }
@@ -1212,7 +1380,9 @@ function cRender(){
   CON[cCur].group.visible = false; trees.forEach(t => { t.visible = true; });
   sun.position.copy(keep.sp); sun.color.copy(keep.sc); sun.intensity = keep.si; hemi.intensity = keep.hi;
 }
-function cResize(){ const w = cStage.clientWidth, h = cStage.clientHeight; cR.setSize(w, h, false); cCam.aspect = w/h; cCam.updateProjectionMatrix(); }
+let cK = 1;
+function cResize(){ const w = cStage.clientWidth, h = cStage.clientHeight; cR.setSize(w, h, false); cCam.aspect = w/h; cCam.updateProjectionMatrix();
+  const k = fitK(w / h, 4 / 3); if (k !== cK) { cCam.position.sub(cCtl.target).multiplyScalar(k / cK).add(cCtl.target); cK = k; cCtl.update(); } }
 new ResizeObserver(cResize).observe(cStage); cResize();
 let cVis = true; new IntersectionObserver(es => cVis = es[0].isIntersecting).observe(cStage);  // draw one frame right away
 (function cLoop(){ requestAnimationFrame(cLoop); if (!cVis) return; cCtl.update(); cRender(); })();
