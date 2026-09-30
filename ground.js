@@ -47,6 +47,6 @@ window.buildGround = function (THREE, S, V, hAt, grp) {
     }
     const pos = [], idx = []; let k = 0;
     T.forEach(t => { const c = [(t[0][0] + t[1][0] + t[2][0]) / 3, (t[0][1] + t[1][1] + t[2][1]) / 3]; if (c[0] < S.x0 || c[0] > S.x1 || c[1] < S.y0 || c[1] > S.y1) return; t.forEach(p => { const v = V(cx(p[0]), cy(p[1]), .06); pos.push(v.x, v.y, v.z); }); idx.push(k, k + 1, k + 2); k += 3; });
-    if (k) grp('road').add(mesh(pos, idx, '#8f866f', .9, .06));
+    if (k) grp('road').add(mesh(pos, idx, '#262825', .85, .06));   // dark grey, reads against the pale clay (user, 2026-09-30)
   }
 };

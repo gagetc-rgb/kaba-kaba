@@ -382,7 +382,8 @@ footer p{max-width:80ch}
   section{padding-block:56px}
   /* hero */
   .hero .wrap{padding-block:120px calc(env(safe-area-inset-bottom,0px) + 92px)}
-  .hero .coords{font-size:min(10px,2.7vw);letter-spacing:.02em;white-space:nowrap}
+  .hero .coords{font-size:11px;letter-spacing:.14em;white-space:nowrap}
+  .hero .coords .ll{display:none}   /* phones: the place name only, no latitude/longitude (user, 2026-09-30) */
   .hero h1{margin:14px 0 16px}
   .figs{margin-top:30px}
   .figs div{padding-top:14px;padding-bottom:12px}
@@ -501,13 +502,13 @@ footer p{max-width:80ch}
   <picture><source media="(max-aspect-ratio: 4/5)" srcset="media/poster-portrait.jpg"><img class="poster" src="media/poster.jpg" alt=""></picture>
   <video id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
   <div class="wrap">
-    <div class="coords">8°36′29″ S &nbsp;·&nbsp; 115°07′57″ E &nbsp;·&nbsp; Kediri, Tabanan, Bali</div>
+    <div class="coords"><span class="ll">8°36′29″ S &nbsp;·&nbsp; 115°07′57″ E &nbsp;·&nbsp; </span>Kediri, Tabanan, Bali</div>
     <h1>Kaba<span class="hy">-</span>Kaba</h1>
     <p class="sub">A jungle hillside that falls to the river, ten minutes from Canggu.</p>
     <div class="figs">
       <div><b class="num">1,500 m²</b><span>Three plots of <span class="nw">500 m²</span></span></div>
       <div><b class="num">21 m</b><span>Above the riverbed</span></div>
-      <div><b class="num">2056</b><span>Lease to 8 July · extension guaranteed</span></div>
+      <div><b class="num">2056</b><span>Lease · extension guaranteed</span></div>
       <div><b class="num">IDR 13.5 M</b><span>Per are, per year</span></div>
     </div>
     <a class="hero-special" href="#contact" data-special>Taking all three plots? Ask for our special price <i aria-hidden="true">→</i></a>
@@ -685,7 +686,7 @@ footer p{max-width:80ch}
       </button>
       <button type="button" class="card" data-c="tower" aria-pressed="false">
         <span class="k">Concept C</span>
-        <h3>Two tree-top houses</h3>
+        <h3>Tree-top houses</h3>
         <p>A matched pair of houses, rising three storeys above the palms.</p>
       </button>
     </div>
@@ -726,7 +727,7 @@ footer p{max-width:80ch}
         <div class="doc"><div class="ico">PDF</div><div><h3>Zoning letter (ITR)</h3><p>From the Tabanan planning office. Zone: residential (yellow). Villa use: permitted (<i>memungkinkan</i>).</p><div class="meta">No. 122.B/2025 · 17 Feb 2025</div></div><span class="pill ok">Ready</span></div>
         <div class="doc"><div class="ico">DWG</div><div><h3>Topographic survey</h3><p>The whole land with 0.5 m contours, cross-sections and every tree. Architects can use the CAD files directly.</p><div class="meta">PT Geotrah Pramana Sentosa · Aug 2025 · DWG · DXF · SKP · PDF</div></div><span class="pill ok">Ready</span></div>
         <div class="doc"><div class="ico">SHM</div><div><h3>Land title</h3><p>The freehold title (Sertifikat Hak Milik) held by the Indonesian owner, over which the lease is granted. Checked clean at the land office; land tax paid.</p><div class="meta">Title check · Apr 2025</div></div><span class="pill">On request</span></div>
-        <div class="doc"><div class="ico">DOC</div><div><h3>Lease</h3><p>A notarial lease to 8 July 2056, with an extension of up to 30 years guaranteed. The deed sets out transfer rights and the ownership of buildings.</p><div class="meta">Term to 08.07.2056 · extension up to 30 yr</div></div><span class="pill">On request</span></div>
+        <div class="doc"><div class="ico">DOC</div><div><h3>Lease</h3><p>A notarial lease to 2056, with an extension of up to 30 years guaranteed. The deed sets out transfer rights and the ownership of buildings.</p><div class="meta">Term to 2056 · extension up to 30 yr</div></div><span class="pill">On request</span></div>
       </div>
     </div>
 
@@ -739,7 +740,7 @@ footer p{max-width:80ch}
     <h2 style="margin-top:14px;max-width:20ch">What buyers <em>ask first.</em></h2>
     <div class="dd">
       <article><h3>Can a foreigner hold this land?</h3><p>Yes, as a leaseholder. The freehold title stays with the Indonesian owner, as the law requires, and you hold a notarial lease. <b>You see the full lease terms before any deposit.</b></p></article>
-      <article><h3>What happens in 2056?</h3><p>The lease runs to 8 July 2056, and <b>an extension of up to 30 years is guaranteed</b> in it, at the market rate at the time. As is standard in Bali, permanent buildings stay with the land when the lease ends.</p></article>
+      <article><h3>What happens in 2056?</h3><p>The lease runs to 2056, and <b>an extension of up to 30 years is guaranteed</b> in it, at the market rate at the time. As is standard in Bali, permanent buildings stay with the land when the lease ends.</p></article>
       <article><h3>What if the owner dies or sells the land?</h3><p><b>The lease continues.</b> It binds the owner’s heirs, and a sale of the land does not end it.</p></article>
       <article><h3>Who handles the permits?</h3><p>Your architect prepares the design; <b>the landowner signs the application and gathers the approvals</b> from the neighbours and the village. The costs are yours.</p></article>
       <article><h3>Is it safe by the river?</h3><p><b>The three plots sit 7 to 21 m above the riverbed</b>, and its cross-sections are in the document pack for your engineer. The ITR places the area in a flood-hazard category, so your building permit sets the exact setback from the water.</p></article>
@@ -780,7 +781,7 @@ footer p{max-width:80ch}
 
 <footer class="dark">
   <div class="wrap">
-    <p>Figures come from ITR 122.B/2025 (17 Feb 2025), the topographic survey of 18 Aug 2025 and the lease terms. Everything here is indicative and should be verified before any transaction. USD at 17,688 IDR.</p>
+    <p>Figures are indicative and should be verified before any transaction. USD at 17,688 IDR.</p>
     <p>Kaba-Kaba · Tabanan · Bali</p>
   </div>
 </footer>
@@ -835,9 +836,13 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) hv.removeAttribute('
 else {
   hv.src = portrait ? 'media/hero-portrait.mp4' : innerWidth < 900 ? 'media/hero-720.mp4' : 'media/hero.mp4'; hv.play().catch(() => {});
 }
-/* floating enquiry pill: always there, except over the form itself */
+/* floating enquiry pill: always there, except over the form itself and whenever a control or a list sits in the
+   bottom band of the screen where the pill floats (the model dock, the concept chips, drive times, route steps) */
 const fab = document.getElementById('fab');
-new IntersectionObserver(es => fab.classList.toggle('away', es[0].isIntersecting), {rootMargin: '0px 0px -30% 0px'}).observe(document.getElementById('formWrap'));
+{ let atForm = false; const under = new Set(); const upd = () => fab.classList.toggle('away', atForm || under.size > 0);
+  new IntersectionObserver(es => { atForm = es[es.length - 1].isIntersecting; upd(); }, {rootMargin: '0px 0px -30% 0px'}).observe(document.getElementById('formWrap'));
+  const band = new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? under.add(e.target) : under.delete(e.target)); upd(); }, {rootMargin: '-86% 0px 0px 0px'});
+  document.querySelectorAll('#dock, .pot .scen, #times, .route ol, .envelope').forEach(el => band.observe(el)); }
 const PHONE = matchMedia('(max-width: 760px)');
 /* documents and questions: on the phone only the headings show; a tap opens the text */
 [...document.querySelectorAll('.doc h3, .dd h3')].forEach(h => {
@@ -1272,7 +1277,7 @@ const labelsEl = document.getElementById('labels'), tags = [];
 function tag(html, cls, x, y, lift){ const el = document.createElement('div'); el.className = 'tag ' + cls; el.innerHTML = html; labelsEl.appendChild(el); tags.push({el, p: V(x, y, lift), layer: cls.includes('plot') ? 'plots' : cls.includes('water') ? 'river' : 'road'}); }
 // the road tag only shows on hover/pick (user, 2026-09-29): the road is already visible in the model, the
 // permanent label just cluttered the view
-tag('River', 'water', 22, -26, 3); tag('River', 'water', 42, -12, 3); tag('Road', 'road hoveronly', -18, 24, 3);
+tag('Road', 'road hoveronly', -18, 24, 3);   // no River tags: the water is blue (user, 2026-09-30)
 
 /* views */
 const VIEWS = {
