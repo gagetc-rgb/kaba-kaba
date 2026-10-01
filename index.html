@@ -66,6 +66,11 @@ section{padding-block:clamp(72px,10vw,140px)}
 .nav .wrap{display:flex;align-items:center;gap:28px;height:68px;color:var(--stone)}
 .brand{font:400 22px/1 var(--logo);text-decoration:none;white-space:nowrap}
 .brand small{font:500 10px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted-ink);margin-left:10px}
+.home{display:inline-flex;align-items:center;gap:8px;flex:none;height:36px;padding:0 14px 0 10px;margin-right:-8px;border:1px solid var(--line-ink);border-radius:999px;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:rgba(228,227,220,.8);transition:color .2s,border-color .2s}
+.home:hover{color:var(--stone);border-color:var(--brass)}
+.home svg{width:15px;height:15px;flex:none}
+@media (max-width:1240px) and (min-width:981px){.nav .brand small{display:none}}
+@media (max-width:420px){.home{width:36px;padding:0;justify-content:center;margin-right:-12px}.home span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
 .nav ul{display:flex;gap:22px;list-style:none;margin:0 0 0 auto;padding:0}
 .nav ul a{font:500 13px/1 var(--body);letter-spacing:.04em;text-decoration:none;color:rgba(228,227,220,.78)}
 .nav ul a:hover{color:var(--stone)}
@@ -476,6 +481,7 @@ footer p{max-width:80ch}
 
 <nav class="nav" id="nav" aria-label="Sections">
   <div class="wrap">
+    <a class="home" href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Home</span></a>
     <a class="brand" href="#top">Kaba<span class="hy">-</span>Kaba<small>Riverfront · Tabanan</small></a>
     <ul>
       <li><a href="#overview">The land</a></li>
